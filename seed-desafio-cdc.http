@@ -1,0 +1,6 @@
+@seed_desafio_cdc_HostAddress = http://localhost:5296
+
+GET {{seed_desafio_cdc_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

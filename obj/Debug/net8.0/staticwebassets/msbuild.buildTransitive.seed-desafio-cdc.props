@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\seed-desafio-cdc.props" />
+</Project>
