@@ -1,0 +1,8 @@
+C:\Git\seed-desafio-cdc\obj\Release\net8.0\seed-desafio-cdc.csproj.AssemblyReference.cache
+C:\Git\seed-desafio-cdc\obj\Release\net8.0\seed-desafio-cdc.GeneratedMSBuildEditorConfig.editorconfig
+C:\Git\seed-desafio-cdc\obj\Release\net8.0\seed-desafio-cdc.AssemblyInfoInputs.cache
+C:\Git\seed-desafio-cdc\obj\Release\net8.0\seed-desafio-cdc.AssemblyInfo.cs
+C:\Git\seed-desafio-cdc\obj\Release\net8.0\seed-desafio-cdc.csproj.CoreCompileInputs.cache
+C:\Git\seed-desafio-cdc\obj\Release\net8.0\seed-desafio-cdc.MvcApplicationPartsAssemblyInfo.cs
+C:\Git\seed-desafio-cdc\obj\Release\net8.0\seed-desafio-cdc.MvcApplicationPartsAssemblyInfo.cache
+C:\Git\seed-desafio-cdc\obj\Release\net8.0\seed-desafio-cdc.sourcelink.json

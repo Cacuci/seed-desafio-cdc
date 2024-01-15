@@ -1,0 +1,7 @@
+C:\Git\seed-desafio-cdc\seed-desafio-cdc-tests.csproj\bin\Release\net8.0\CoverletSourceRootsMapping_seed-desafio-cdc-tests
+C:\Git\seed-desafio-cdc\seed-desafio-cdc-tests.csproj\obj\Release\net8.0\seed-desafio-cdc-tests.csproj.AssemblyReference.cache
+C:\Git\seed-desafio-cdc\seed-desafio-cdc-tests.csproj\obj\Release\net8.0\seed-desafio-cdc-tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Git\seed-desafio-cdc\seed-desafio-cdc-tests.csproj\obj\Release\net8.0\seed-desafio-cdc-tests.AssemblyInfoInputs.cache
+C:\Git\seed-desafio-cdc\seed-desafio-cdc-tests.csproj\obj\Release\net8.0\seed-desafio-cdc-tests.AssemblyInfo.cs
+C:\Git\seed-desafio-cdc\seed-desafio-cdc-tests.csproj\obj\Release\net8.0\seed-desafio-cdc-tests.csproj.CoreCompileInputs.cache
+C:\Git\seed-desafio-cdc\seed-desafio-cdc-tests.csproj\obj\Release\net8.0\seed-desafio-cdc-tests.sourcelink.json

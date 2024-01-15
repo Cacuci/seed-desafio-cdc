@@ -1,6 +1,16 @@
-@seed_desafio_cdc_HostAddress = http://localhost:5296
+@seed-desafio-cdc_HostAddress = https://localhost:7160
 
-GET {{seed_desafio_cdc_HostAddress}}/weatherforecast/
-Accept: application/json
+POST {{seed-desafio-cdc_HostAddress}}/api/authors
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "name": "string",
+  "description": "string"
+}
+
+###
+
+GET {{seed-desafio-cdc_HostAddress}}/api/authors
 
 ###
