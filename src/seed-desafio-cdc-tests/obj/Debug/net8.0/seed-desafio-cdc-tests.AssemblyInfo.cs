@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("seed-desafio-cdc-tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+508123fd3c04fa1813eb1c8ccdddf1b337c4442d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d9142a6b528750b32fa963c50e30591eae7e12a9")]
 [assembly: System.Reflection.AssemblyProductAttribute("seed-desafio-cdc-tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("seed-desafio-cdc-tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

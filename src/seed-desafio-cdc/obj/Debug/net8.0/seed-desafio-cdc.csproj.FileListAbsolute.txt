@@ -38,10 +38,10 @@ C:\Git\seed-desafio-cdc\src\seed-desafio-cdc\obj\Debug\net8.0\staticwebassets\ms
 C:\Git\seed-desafio-cdc\src\seed-desafio-cdc\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.seed-desafio-cdc.props
 C:\Git\seed-desafio-cdc\src\seed-desafio-cdc\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Git\seed-desafio-cdc\src\seed-desafio-cdc\obj\Debug\net8.0\scopedcss\bundle\seed-desafio-cdc.styles.css
-C:\Git\seed-desafio-cdc\src\seed-desafio-cdc\obj\Debug\net8.0\seed-desafio-cdc.csproj.CopyComplete
 C:\Git\seed-desafio-cdc\src\seed-desafio-cdc\obj\Debug\net8.0\seed-desafio-cdc.dll
 C:\Git\seed-desafio-cdc\src\seed-desafio-cdc\obj\Debug\net8.0\refint\seed-desafio-cdc.dll
 C:\Git\seed-desafio-cdc\src\seed-desafio-cdc\obj\Debug\net8.0\seed-desafio-cdc.xml
 C:\Git\seed-desafio-cdc\src\seed-desafio-cdc\obj\Debug\net8.0\seed-desafio-cdc.pdb
 C:\Git\seed-desafio-cdc\src\seed-desafio-cdc\obj\Debug\net8.0\seed-desafio-cdc.genruntimeconfig.cache
 C:\Git\seed-desafio-cdc\src\seed-desafio-cdc\obj\Debug\net8.0\ref\seed-desafio-cdc.dll
+C:\Git\seed-desafio-cdc\src\seed-desafio-cdc\obj\Debug\net8.0\seed-des.1994FF4E.Up2Date

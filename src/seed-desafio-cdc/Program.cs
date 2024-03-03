@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.OpenApi.Models;
+using seed_desafio_cdc;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Text.RegularExpressions;
@@ -28,6 +29,10 @@ builder.Services.AddDbContext<DataContext>(option =>
     option.UseInMemoryDatabase("DesafioDB");
 });
 
+builder.Services.AddScoped<CategoryService>();
+builder.Services.AddScoped<AuthorService>();
+builder.Services.AddScoped<DataContext>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -39,20 +44,38 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapPost("api/authors", async ([FromBody] AuthorDTO request, DataContext context) =>
+app.MapPost("api/categories", async ([FromBody] CategoryDTO request, CategoryService service, CancellationToken token) =>
 {
-    bool exist = await context.Authors.AnyAsync(author => author.Email.Contains(request.Email, StringComparison.InvariantCultureIgnoreCase));
-
-    if (exist)
+    try
     {
-        return Results.BadRequest("Esse endereço de email já está em uso");
+        await service.RegisterCategoryAsync(request, token);
+    }
+    catch (Exception ex)
+    {
+        return Results.BadRequest(ex.Message);
     }
 
-    var authorModel = request.MapToModel();
+    return TypedResults.Created();
+})
+.WithName("PostCategories")
+.WithOpenApi(option => new OpenApiOperation(option)
+{
+    Summary = "Realiza o cadastro de categoria",
+    Description = "Use esta API para realizar o cadastramento de uma categoria. Todos os detalhes devem ser passados no corpo da requisição."
+})
+.Produces((int)HttpStatusCode.Created)
+.Produces((int)HttpStatusCode.BadRequest);
 
-    await context.Authors.AddAsync(authorModel);
-
-    await context.SaveChangesAsync();
+app.MapPost("api/authors", async ([FromBody] AuthorDTO request, AuthorService service, CancellationToken token) =>
+{
+    try
+    {
+        await service.RegisterAuthorAsync(request, token);
+    }
+    catch (Exception ex)
+    {
+        return Results.BadRequest(ex.Message);
+    }
 
     return TypedResults.Created();
 })
@@ -64,7 +87,6 @@ app.MapPost("api/authors", async ([FromBody] AuthorDTO request, DataContext cont
 })
 .Produces((int)HttpStatusCode.Created)
 .Produces((int)HttpStatusCode.BadRequest);
-
 
 app.MapGet("api/authors", async (DataContext context) =>
 {
@@ -87,12 +109,13 @@ app.MapGet("api/authors", async (DataContext context) =>
 
 app.Run();
 
-class DataContext(DbContextOptions<DataContext> options) : DbContext(options)
+public class DataContext(DbContextOptions<DataContext> options) : DbContext(options)
 {
     public DbSet<Author> Authors { get; set; }
+    public DbSet<Category> Categories { get; set; }
 }
 
-class DataMapping : IEntityTypeConfiguration<Author>
+public class AuthorMapping : IEntityTypeConfiguration<Author>
 {
     public void Configure(EntityTypeBuilder<Author> builder)
     {
@@ -100,7 +123,15 @@ class DataMapping : IEntityTypeConfiguration<Author>
     }
 }
 
-public partial class Author
+public class CategoryMapping : IEntityTypeConfiguration<Category>
+{
+    public void Configure(EntityTypeBuilder<Category> builder)
+    {
+        builder.HasKey(c => c.Id);
+    }
+}
+
+public class Author
 {
     public Author(string email, string name, string description)
     {
@@ -111,13 +142,13 @@ public partial class Author
         Validation();
     }
 
-    public Guid Id { get; } = Guid.NewGuid();
+    public Guid Id { get; private set; } = Guid.NewGuid();
     public string Email { get; private set; }
     public string Name { get; private set; }
     public string Description { get; private set; }
     public DateTime DateRegister { get; } = DateTime.UtcNow;
 
-    public void Validation()
+    void Validation()
     {
         if (string.IsNullOrEmpty(Email))
         {
@@ -153,7 +184,33 @@ public partial class Author
     }
 }
 
-internal record AuthorDTO
+public class Category
+{
+    public Category(string name)
+    {
+        Name = name;
+
+        Validation();
+    }
+
+    public Guid Id { get; private set; } = Guid.NewGuid();
+    public string Name { get; private set; }
+
+    void Validation()
+    {
+        if (string.IsNullOrEmpty(Name))
+        {
+            throw new Exception("Name. Campo obrigatório não fornecido");
+        }
+
+        if (Name.Length < 3)
+        {
+            throw new Exception("Name. Deve conter ao menos {3} caracteres");
+        }
+    }
+}
+
+public record AuthorDTO
 {
     [Required(ErrorMessage = "Campo obrigatório não fornecido")]
     [DataType(DataType.EmailAddress, ErrorMessage = "Email em formato inválido")]
@@ -170,5 +227,17 @@ internal record AuthorDTO
     public Author MapToModel()
     {
         return new Author(Email, Name, Description);
+    }
+}
+
+public record CategoryDTO
+{
+    [Required(ErrorMessage = "Campo obrigatório não fornecido")]
+    [StringLength(100, ErrorMessage = "O {0} deve conter ao menos {3} caracteres", MinimumLength = 3)]
+    public required string Name { get; set; }
+
+    public Category MapToModel()
+    {
+        return new Category(Name);
     }
 }

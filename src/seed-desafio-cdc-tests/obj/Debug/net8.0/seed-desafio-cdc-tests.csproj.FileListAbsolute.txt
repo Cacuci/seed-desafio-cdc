@@ -116,9 +116,9 @@ C:\Git\seed-desafio-cdc\src\seed-desafio-cdc-tests\obj\Debug\net8.0\seed-desafio
 C:\Git\seed-desafio-cdc\src\seed-desafio-cdc-tests\obj\Debug\net8.0\seed-desafio-cdc-tests.AssemblyInfo.cs
 C:\Git\seed-desafio-cdc\src\seed-desafio-cdc-tests\obj\Debug\net8.0\seed-desafio-cdc-tests.csproj.CoreCompileInputs.cache
 C:\Git\seed-desafio-cdc\src\seed-desafio-cdc-tests\obj\Debug\net8.0\seed-desafio-cdc-tests.sourcelink.json
-C:\Git\seed-desafio-cdc\src\seed-desafio-cdc-tests\obj\Debug\net8.0\seed-desafio-cdc-tests.csproj.CopyComplete
 C:\Git\seed-desafio-cdc\src\seed-desafio-cdc-tests\obj\Debug\net8.0\seed-desafio-cdc-tests.dll
 C:\Git\seed-desafio-cdc\src\seed-desafio-cdc-tests\obj\Debug\net8.0\refint\seed-desafio-cdc-tests.dll
 C:\Git\seed-desafio-cdc\src\seed-desafio-cdc-tests\obj\Debug\net8.0\seed-desafio-cdc-tests.pdb
 C:\Git\seed-desafio-cdc\src\seed-desafio-cdc-tests\obj\Debug\net8.0\seed-desafio-cdc-tests.genruntimeconfig.cache
 C:\Git\seed-desafio-cdc\src\seed-desafio-cdc-tests\obj\Debug\net8.0\ref\seed-desafio-cdc-tests.dll
+C:\Git\seed-desafio-cdc\src\seed-desafio-cdc-tests\obj\Debug\net8.0\seed-des.A0C4DEE0.Up2Date
