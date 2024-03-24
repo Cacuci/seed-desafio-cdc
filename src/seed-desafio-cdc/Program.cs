@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.OpenApi.Models;
 using seed_desafio_cdc;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Net;
 using System.Text.RegularExpressions;
@@ -120,6 +121,7 @@ public class AuthorMapping : IEntityTypeConfiguration<Author>
     public void Configure(EntityTypeBuilder<Author> builder)
     {
         builder.HasKey(c => c.Id);
+        builder.HasIndex(c => c.Email).IsUnique();
     }
 }
 
@@ -128,6 +130,7 @@ public class CategoryMapping : IEntityTypeConfiguration<Category>
     public void Configure(EntityTypeBuilder<Category> builder)
     {
         builder.HasKey(c => c.Id);
+        builder.HasIndex(c => c.Name).IsUnique();
     }
 }
 
@@ -210,6 +213,89 @@ public class Category
     }
 }
 
+public class Book
+{
+    public Book(string title, string overview, decimal price, int pageNumber, string isbn, string category, string author)
+    {
+        Title = title;
+        Overview = overview;
+        Price = price;
+        PageNumber = pageNumber;
+        Isbn = isbn;
+        Category = category;
+        Author = author;
+
+        Validation();
+    }
+
+    public string Title { get; private set; }
+
+    public string Overview { get; private set; }
+
+    public string Summary { get; private set; }
+
+    public decimal Price { get; private set; }
+
+    public int PageNumber { get; private set; }
+
+    public string Isbn { get; private set; }
+
+    public DateOnly Publication { get; private set; } = new DateOnly(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.AddDays(1).Day);
+
+    public string Category { get; private set; }
+
+    public string Author { get; private set; }
+
+
+    void Validation()
+    {
+        if (string.IsNullOrEmpty(Title))
+        {
+            throw new Exception("Title. Campo obrigatório não fornecido");
+        }
+
+        if (string.IsNullOrEmpty(Overview))
+        {
+            throw new Exception("Overview. Campo obrigatório não fornecido");
+        }
+
+        if (Overview.Length >= 500)
+        {
+            throw new Exception("Overview. Deve conter no mãximo 500 caracteres");
+        }
+
+        if (Price is < 20 or > 999999999999.999m)
+        {
+            throw new Exception("Price. Valor deve ser maior/igual 20 e menor que 999999999999.999");
+        }
+
+        if (PageNumber is < 100 or > 65535)
+        {
+            throw new Exception("PageNumber. Valor deve ser maior/igual 100 e menor que 65535");
+        }
+
+        if (string.IsNullOrEmpty(Isbn))
+        {
+            throw new Exception("Isbn. Campo obrigatório não fornecido");
+        }
+
+        if (Publication < new DateOnly(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.AddDays(1).Day))
+        {
+            throw new Exception("Publication. A data não pode menor ou igual ao dia atual");
+        }
+
+        if (string.IsNullOrEmpty(Category))
+        {
+            throw new Exception("Category. Campo obrigatório não fornecido");
+        }
+
+        if (string.IsNullOrEmpty(Author))
+        {
+            throw new Exception("Category. Campo obrigatório não fornecido");
+        }
+    }
+}
+
 public record AuthorDTO
 {
     [Required(ErrorMessage = "Campo obrigatório não fornecido")]
@@ -240,4 +326,37 @@ public record CategoryDTO
     {
         return new Category(Name);
     }
+}
+
+public record BookDTO
+{
+    [Required(ErrorMessage = "Campo obrigatório não fornecido")]
+    public string Title { get; set; }
+
+    [Required(ErrorMessage = "Campo obrigatório não fornecido")]
+    [StringLength(500, ErrorMessage = "O {0} deve conter ao menos {1} caracteres", MinimumLength = 1)]
+    public string Overview { get; set; }
+
+    [StringLength(500, ErrorMessage = "O {0} deve conter ao menos {1} caracteres", MinimumLength = 1)]
+    public string? Summary { get; set; }
+
+    [Required(ErrorMessage = "Campo obrigatório não fornecido")]
+    [DefaultValue(20)]
+    [Range(20, 999999999999.999, ErrorMessage = "Valor deve ser maior/igual 20 e menor que 999999999999.999")]
+    public decimal Price { get; set; }
+
+    [Required(ErrorMessage = "Campo obrigatório não fornecido")]
+    [Range(100, 65535, ErrorMessage = "Valor deve ser maior/igual 100 e menor que 65535")]
+    public int PageNumber { get; set; }
+
+    [Required(ErrorMessage = "Campo obrigatório não fornecido")]
+    public string Isbn { get; set; }
+
+    public DateOnly Publication { get; set; }
+
+    [Required(ErrorMessage = "Campo obrigatório não fornecido")]
+    public string CategoryCode { get; set; }
+
+    [Required(ErrorMessage = "Campo obrigatório não fornecido")]
+    public string Author { get; set; }
 }
