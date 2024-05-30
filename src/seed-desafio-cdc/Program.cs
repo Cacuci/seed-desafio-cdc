@@ -32,6 +32,8 @@ builder.Services.AddDbContext<DataContext>(option =>
 
 builder.Services.AddScoped<CategoryService>();
 builder.Services.AddScoped<AuthorService>();
+builder.Services.AddScoped<BookService>();
+
 builder.Services.AddScoped<DataContext>();
 
 var app = builder.Build();
@@ -91,12 +93,7 @@ app.MapPost("api/authors", async ([FromBody] AuthorDTO request, AuthorService se
 
 app.MapGet("api/authors", async (DataContext context) =>
 {
-    var result = await context.Authors.Select(author => new AuthorDTO()
-    {
-        Email = author.Email,
-        Name = author.Name,
-        Description = author.Description
-    }).ToListAsync();
+    var result = await context.Authors.Select(author => new AuthorDTO(author)).ToListAsync();
 
     return result;
 })
@@ -108,12 +105,50 @@ app.MapGet("api/authors", async (DataContext context) =>
                   "Não há parâmetros obrigatórios para esta API."
 });
 
+app.MapGet("api/books", async (DataContext context) => {
+    
+    var result = await context.Books.Select(book => new BookDTO(book)).ToListAsync();
+    
+    return result;
+
+})
+.WithName("GetBooks")
+.WithOpenApi(option => new OpenApiOperation(option)
+{
+    Summary = "Obtém o cadastro de livros",
+    Description = "Está API pode ser usada para retornar os livros.\r\n///\r\n/// " +
+                  "Não há parâmetros obrigatórios para esta API."
+});
+
+app.MapPost("api/books", async ([FromBody] BookDTO request, BookService service, CancellationToken token) =>
+{
+    try
+    {
+        await service.RegisterBookAsync(request, token);
+    }
+    catch (Exception ex)
+    {
+        return Results.BadRequest(ex.Message);
+    }
+
+    return TypedResults.Created();
+})
+.WithName("PostBooks")
+.WithOpenApi(option => new OpenApiOperation(option)
+{
+    Summary = "Realiza o cadastro do livro",
+    Description = "Use esta API para realizar o cadastramento do livro. Todos os detalhes devem ser passados no corpo da requisição."
+})
+.Produces((int)HttpStatusCode.Created)
+.Produces((int)HttpStatusCode.BadRequest);
+
 app.Run();
 
 public class DataContext(DbContextOptions<DataContext> options) : DbContext(options)
 {
     public DbSet<Author> Authors { get; set; }
     public DbSet<Category> Categories { get; set; }
+    public DbSet<Book> Books { get; set; }
 }
 
 public class AuthorMapping : IEntityTypeConfiguration<Author>
@@ -131,6 +166,15 @@ public class CategoryMapping : IEntityTypeConfiguration<Category>
     {
         builder.HasKey(c => c.Id);
         builder.HasIndex(c => c.Name).IsUnique();
+    }
+}
+
+public class BookMapping : IEntityTypeConfiguration<Book>
+{
+    public void Configure(EntityTypeBuilder<Book> builder)
+    {
+        builder.HasKey(c => c.Id);
+        builder.HasIndex(c => c.Title).IsUnique();
     }
 }
 
@@ -215,10 +259,11 @@ public class Category
 
 public class Book
 {
-    public Book(string title, string overview, decimal price, int pageNumber, string isbn, string category, string author)
+    public Book(string title, string overview, string summary, decimal price, int pageNumber, string isbn, string category, string author)
     {
         Title = title;
         Overview = overview;
+        Summary = summary;
         Price = price;
         PageNumber = pageNumber;
         Isbn = isbn;
@@ -228,11 +273,13 @@ public class Book
         Validation();
     }
 
+    public Guid Id { get; private set; } = Guid.NewGuid();
+
     public string Title { get; private set; }
 
     public string Overview { get; private set; }
 
-    public string Summary { get; private set; }
+    public string? Summary { get; private set; }
 
     public decimal Price { get; private set; }
 
@@ -245,7 +292,6 @@ public class Book
     public string Category { get; private set; }
 
     public string Author { get; private set; }
-
 
     void Validation()
     {
@@ -261,7 +307,7 @@ public class Book
 
         if (Overview.Length >= 500)
         {
-            throw new Exception("Overview. Deve conter no mãximo 500 caracteres");
+            throw new Exception("Overview. Deve conter no maximo 500 caracteres");
         }
 
         if (Price is < 20 or > 999999999999.999m)
@@ -298,17 +344,26 @@ public class Book
 
 public record AuthorDTO
 {
+    public AuthorDTO() { }
+
+    public AuthorDTO(Author author)
+    {
+        Email = author.Email;
+        Name = author.Name;
+        Description = author.Description;
+    }
+
     [Required(ErrorMessage = "Campo obrigatório não fornecido")]
     [DataType(DataType.EmailAddress, ErrorMessage = "Email em formato inválido")]
-    public required string Email { get; set; }
+    public string Email { get; set; }
 
     [Required(ErrorMessage = "Campo obrigatório não fornecido")]
     [StringLength(100, ErrorMessage = "A {0} deve conter ao menos {3} caracteres", MinimumLength = 3)]
-    public required string Name { get; set; }
+    public string Name { get; set; }
 
     [Required(ErrorMessage = "Campo obrigatório não fornecido")]
     [StringLength(400, ErrorMessage = "A {0} deve conter ao menos {1} caractere", MinimumLength = 1)]
-    public required string Description { get; set; }
+    public string Description { get; set; }
 
     public Author MapToModel()
     {
@@ -330,6 +385,19 @@ public record CategoryDTO
 
 public record BookDTO
 {
+    public BookDTO() { }
+
+    public BookDTO(Book book)
+    {
+        Title = book.Title;
+        Overview = book.Overview;
+        Summary = book.Summary;
+        Price = book.Price;
+        PageNumber = book.PageNumber;
+        CategoryCode = book.Category;
+        Author = book.Author;
+     }
+
     [Required(ErrorMessage = "Campo obrigatório não fornecido")]
     public string Title { get; set; }
 
@@ -337,7 +405,7 @@ public record BookDTO
     [StringLength(500, ErrorMessage = "O {0} deve conter ao menos {1} caracteres", MinimumLength = 1)]
     public string Overview { get; set; }
 
-    [StringLength(500, ErrorMessage = "O {0} deve conter ao menos {1} caracteres", MinimumLength = 1)]
+    [MaxLength(500, ErrorMessage = "O {0} deve conter no maximo {1} caracteres")]
     public string? Summary { get; set; }
 
     [Required(ErrorMessage = "Campo obrigatório não fornecido")]
@@ -359,4 +427,9 @@ public record BookDTO
 
     [Required(ErrorMessage = "Campo obrigatório não fornecido")]
     public string Author { get; set; }
+
+    public Book MapToModel()
+    {
+        return new Book(Title, Overview, Summary, Price, PageNumber, Isbn, CategoryCode, Author);
+    }
 }

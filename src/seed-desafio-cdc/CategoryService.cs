@@ -8,7 +8,7 @@ namespace seed_desafio_cdc
 
         public async Task RegisterCategoryAsync(CategoryDTO categoryDTO, CancellationToken token)
         {
-            bool exist = await _context.Categories.AnyAsync(category => category.Name.Contains(categoryDTO.Name, StringComparison.InvariantCultureIgnoreCase), token);
+            bool exist = await _context.Categories.AnyAsync(category => category.Name.Equals(categoryDTO.Name, StringComparison.InvariantCultureIgnoreCase), token);
 
             if (exist)
             {

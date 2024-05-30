@@ -8,7 +8,7 @@ namespace seed_desafio_cdc
 
         public async Task RegisterAuthorAsync(AuthorDTO authorDTO, CancellationToken token)
         {
-            bool exist = await _context.Authors.AnyAsync(author => author.Email.Contains(authorDTO.Email, StringComparison.InvariantCultureIgnoreCase), token);
+            bool exist = await _context.Authors.AnyAsync(author => author.Email.Equals(authorDTO.Email, StringComparison.InvariantCultureIgnoreCase), token);
 
             if (exist)
             {
