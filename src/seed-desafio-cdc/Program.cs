@@ -1,12 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.OpenApi.Models;
 using seed_desafio_cdc;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+using seed_desafio_cdc.Context;
 using System.Net;
-using System.Text.RegularExpressions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,7 +24,8 @@ builder.Services.AddSwaggerGen(setup =>
 
 builder.Services.AddDbContext<DataContext>(option =>
 {
-    option.UseInMemoryDatabase("DesafioDB");
+    // option.UseInMemoryDatabase("DesafioDB");
+    option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 builder.Services.AddScoped<CategoryService>();
@@ -105,12 +103,35 @@ app.MapGet("api/authors", async (DataContext context) =>
                   "Não há parâmetros obrigatórios para esta API."
 });
 
-app.MapGet("api/books", async (DataContext context) => {
-    
-    var result = await context.Books.Select(book => new BookDTO(book)).ToListAsync();
-    
+app.MapGet("api/books", async (DataContext context) =>
+{
+    var result = await context.Books.Include(book => book.Category)
+                                    .Include(book => book.Author)
+                                    .Select(book => new BookResponseDTO(book)).ToListAsync();
+
     return result;
 
+})
+.WithName("GetBookDetail")
+.WithOpenApi(option => new OpenApiOperation(option)
+{
+    Summary = "Obtém o cadastro de livros",
+    Description = "Está API pode ser usada para retornar os livros.\r\n///\r\n/// " +
+                  "Não há parâmetros obrigatórios para esta API."
+});
+
+app.MapGet("api/books/{id}/detail", async ([FromRoute] Guid id, DataContext context, CancellationToken token) =>
+{
+    var book = await context.Books.FindAsync(id, token);
+
+    if (book is null)
+    {
+        return Results.NotFound();
+    }
+
+    var result = new BookDetailResponseDTO(book);
+
+    return TypedResults.Ok(result);
 })
 .WithName("GetBooks")
 .WithOpenApi(option => new OpenApiOperation(option)
@@ -144,292 +165,49 @@ app.MapPost("api/books", async ([FromBody] BookDTO request, BookService service,
 
 app.Run();
 
-public class DataContext(DbContextOptions<DataContext> options) : DbContext(options)
-{
-    public DbSet<Author> Authors { get; set; }
-    public DbSet<Category> Categories { get; set; }
-    public DbSet<Book> Books { get; set; }
-}
+//public class DataContext(DbContextOptions<DataContext> options) : DbContext(options)
+//{
+//    public DbSet<Author> Authors { get; set; }
+//    public DbSet<Category> Categories { get; set; }
+//    public DbSet<Book> Books { get; set; }
+//}
 
-public class AuthorMapping : IEntityTypeConfiguration<Author>
-{
-    public void Configure(EntityTypeBuilder<Author> builder)
-    {
-        builder.HasKey(c => c.Id);
-        builder.HasIndex(c => c.Email).IsUnique();
-    }
-}
+//public class AuthorMapping : IEntityTypeConfiguration<Author>
+//{
+//    public void Configure(EntityTypeBuilder<Author> builder)
+//    {
+//        builder.HasKey(c => c.Id);
+//        builder.HasIndex(c => c.Email).IsUnique();
+//    }
+//}
 
-public class CategoryMapping : IEntityTypeConfiguration<Category>
-{
-    public void Configure(EntityTypeBuilder<Category> builder)
-    {
-        builder.HasKey(c => c.Id);
-        builder.HasIndex(c => c.Name).IsUnique();
-    }
-}
+//public class CategoryMapping : IEntityTypeConfiguration<Category>
+//{
+//    public void Configure(EntityTypeBuilder<Category> builder)
+//    {
+//        builder.HasKey(c => c.Id);
+//        builder.HasIndex(c => c.Name).IsUnique();
+//    }
+//}
 
-public class BookMapping : IEntityTypeConfiguration<Book>
-{
-    public void Configure(EntityTypeBuilder<Book> builder)
-    {
-        builder.HasKey(c => c.Id);
-        builder.HasIndex(c => c.Title).IsUnique();
-    }
-}
+//public class BookMapping : IEntityTypeConfiguration<Book>
+//{
+//    public void Configure(EntityTypeBuilder<Book> builder)
+//    {
+//        builder.HasKey(c => c.Id);
 
-public class Author
-{
-    public Author(string email, string name, string description)
-    {
-        Email = email;
-        Name = name;
-        Description = description;
+//        builder.HasIndex(c => c.Title).IsUnique();
 
-        Validation();
-    }
+//        builder.HasOne(c => c.Author)
+//               .WithOne()
+//               .HasForeignKey<Author>("Id")
+//               .IsRequired();
 
-    public Guid Id { get; private set; } = Guid.NewGuid();
-    public string Email { get; private set; }
-    public string Name { get; private set; }
-    public string Description { get; private set; }
-    public DateTime DateRegister { get; } = DateTime.UtcNow;
+//        builder.HasOne(c => c.Category)
+//               .WithOne()
+//               .HasForeignKey<Category>("Id")
+//               .IsRequired();
 
-    void Validation()
-    {
-        if (string.IsNullOrEmpty(Email))
-        {
-            throw new Exception("Email. Campo obrigatório não fornecido");
-        }
-
-        if (string.IsNullOrEmpty(Name))
-        {
-            throw new Exception("Name. Campo obrigatório não fornecido");
-        }
-
-        if (string.IsNullOrEmpty(Description))
-        {
-            throw new Exception("Description. Campo obrigatório não fornecido");
-        }
-
-        if (Name.Length < 3)
-        {
-            throw new Exception("Name. Deve conter ao menos {3} caracteres");
-        }
-
-        if (Description.Length < 3)
-        {
-            throw new Exception("Description. Deve conter ao menos {3} caracteres");
-        }
-
-        Match emailValid = Regex.Match(Email, "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
-
-        if (!emailValid.Success)
-        {
-            throw new Exception("Email em formato inválido");
-        }
-    }
-}
-
-public class Category
-{
-    public Category(string name)
-    {
-        Name = name;
-
-        Validation();
-    }
-
-    public Guid Id { get; private set; } = Guid.NewGuid();
-    public string Name { get; private set; }
-
-    void Validation()
-    {
-        if (string.IsNullOrEmpty(Name))
-        {
-            throw new Exception("Name. Campo obrigatório não fornecido");
-        }
-
-        if (Name.Length < 3)
-        {
-            throw new Exception("Name. Deve conter ao menos {3} caracteres");
-        }
-    }
-}
-
-public class Book
-{
-    public Book(string title, string overview, string summary, decimal price, int pageNumber, string isbn, string category, string author)
-    {
-        Title = title;
-        Overview = overview;
-        Summary = summary;
-        Price = price;
-        PageNumber = pageNumber;
-        Isbn = isbn;
-        Category = category;
-        Author = author;
-
-        Validation();
-    }
-
-    public Guid Id { get; private set; } = Guid.NewGuid();
-
-    public string Title { get; private set; }
-
-    public string Overview { get; private set; }
-
-    public string? Summary { get; private set; }
-
-    public decimal Price { get; private set; }
-
-    public int PageNumber { get; private set; }
-
-    public string Isbn { get; private set; }
-
-    public DateOnly Publication { get; private set; } = new DateOnly(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.AddDays(1).Day);
-
-    public string Category { get; private set; }
-
-    public string Author { get; private set; }
-
-    void Validation()
-    {
-        if (string.IsNullOrEmpty(Title))
-        {
-            throw new Exception("Title. Campo obrigatório não fornecido");
-        }
-
-        if (string.IsNullOrEmpty(Overview))
-        {
-            throw new Exception("Overview. Campo obrigatório não fornecido");
-        }
-
-        if (Overview.Length >= 500)
-        {
-            throw new Exception("Overview. Deve conter no maximo 500 caracteres");
-        }
-
-        if (Price is < 20 or > 999999999999.999m)
-        {
-            throw new Exception("Price. Valor deve ser maior/igual 20 e menor que 999999999999.999");
-        }
-
-        if (PageNumber is < 100 or > 65535)
-        {
-            throw new Exception("PageNumber. Valor deve ser maior/igual 100 e menor que 65535");
-        }
-
-        if (string.IsNullOrEmpty(Isbn))
-        {
-            throw new Exception("Isbn. Campo obrigatório não fornecido");
-        }
-
-        if (Publication < new DateOnly(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.AddDays(1).Day))
-        {
-            throw new Exception("Publication. A data não pode menor ou igual ao dia atual");
-        }
-
-        if (string.IsNullOrEmpty(Category))
-        {
-            throw new Exception("Category. Campo obrigatório não fornecido");
-        }
-
-        if (string.IsNullOrEmpty(Author))
-        {
-            throw new Exception("Category. Campo obrigatório não fornecido");
-        }
-    }
-}
-
-public record AuthorDTO
-{
-    public AuthorDTO() { }
-
-    public AuthorDTO(Author author)
-    {
-        Email = author.Email;
-        Name = author.Name;
-        Description = author.Description;
-    }
-
-    [Required(ErrorMessage = "Campo obrigatório não fornecido")]
-    [DataType(DataType.EmailAddress, ErrorMessage = "Email em formato inválido")]
-    public string Email { get; set; }
-
-    [Required(ErrorMessage = "Campo obrigatório não fornecido")]
-    [StringLength(100, ErrorMessage = "A {0} deve conter ao menos {3} caracteres", MinimumLength = 3)]
-    public string Name { get; set; }
-
-    [Required(ErrorMessage = "Campo obrigatório não fornecido")]
-    [StringLength(400, ErrorMessage = "A {0} deve conter ao menos {1} caractere", MinimumLength = 1)]
-    public string Description { get; set; }
-
-    public Author MapToModel()
-    {
-        return new Author(Email, Name, Description);
-    }
-}
-
-public record CategoryDTO
-{
-    [Required(ErrorMessage = "Campo obrigatório não fornecido")]
-    [StringLength(100, ErrorMessage = "O {0} deve conter ao menos {3} caracteres", MinimumLength = 3)]
-    public required string Name { get; set; }
-
-    public Category MapToModel()
-    {
-        return new Category(Name);
-    }
-}
-
-public record BookDTO
-{
-    public BookDTO() { }
-
-    public BookDTO(Book book)
-    {
-        Title = book.Title;
-        Overview = book.Overview;
-        Summary = book.Summary;
-        Price = book.Price;
-        PageNumber = book.PageNumber;
-        CategoryCode = book.Category;
-        Author = book.Author;
-     }
-
-    [Required(ErrorMessage = "Campo obrigatório não fornecido")]
-    public string Title { get; set; }
-
-    [Required(ErrorMessage = "Campo obrigatório não fornecido")]
-    [StringLength(500, ErrorMessage = "O {0} deve conter ao menos {1} caracteres", MinimumLength = 1)]
-    public string Overview { get; set; }
-
-    [MaxLength(500, ErrorMessage = "O {0} deve conter no maximo {1} caracteres")]
-    public string? Summary { get; set; }
-
-    [Required(ErrorMessage = "Campo obrigatório não fornecido")]
-    [DefaultValue(20)]
-    [Range(20, 999999999999.999, ErrorMessage = "Valor deve ser maior/igual 20 e menor que 999999999999.999")]
-    public decimal Price { get; set; }
-
-    [Required(ErrorMessage = "Campo obrigatório não fornecido")]
-    [Range(100, 65535, ErrorMessage = "Valor deve ser maior/igual 100 e menor que 65535")]
-    public int PageNumber { get; set; }
-
-    [Required(ErrorMessage = "Campo obrigatório não fornecido")]
-    public string Isbn { get; set; }
-
-    public DateOnly Publication { get; set; }
-
-    [Required(ErrorMessage = "Campo obrigatório não fornecido")]
-    public string CategoryCode { get; set; }
-
-    [Required(ErrorMessage = "Campo obrigatório não fornecido")]
-    public string Author { get; set; }
-
-    public Book MapToModel()
-    {
-        return new Book(Title, Overview, Summary, Price, PageNumber, Isbn, CategoryCode, Author);
-    }
-}
+//        builder.Property(c => c.Price).HasPrecision(10, 2);
+//    }
+//}

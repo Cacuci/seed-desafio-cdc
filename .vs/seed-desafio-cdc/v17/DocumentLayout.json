@@ -3,20 +3,33 @@
   "WorkspaceRootPath": "C:\\Git\\seed-desafio-cdc\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{09E37DF8-8F96-4628-B83B-888A4841DF4B}|src\\seed-desafio-cdc-tests\\seed-desafio-cdc-tests.csproj|c:\\git\\seed-desafio-cdc\\src\\seed-desafio-cdc-tests\\booktest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09E37DF8-8F96-4628-B83B-888A4841DF4B}|src\\seed-desafio-cdc-tests\\seed-desafio-cdc-tests.csproj|solutionrelative:src\\seed-desafio-cdc-tests\\booktest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rafae\\AppData\\Local\\Temp\\pndas0f0..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED2AC206-5046-4DA4-B735-599BB4F6F8BC}|src\\seed-desafio-cdc\\seed-desafio-cdc.csproj|c:\\git\\seed-desafio-cdc\\src\\seed-desafio-cdc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED2AC206-5046-4DA4-B735-599BB4F6F8BC}|src\\seed-desafio-cdc\\seed-desafio-cdc.csproj|solutionrelative:src\\seed-desafio-cdc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ED2AC206-5046-4DA4-B735-599BB4F6F8BC}|src\\seed-desafio-cdc\\seed-desafio-cdc.csproj|C:\\Git\\seed-desafio-cdc\\src\\seed-desafio-cdc\\context\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED2AC206-5046-4DA4-B735-599BB4F6F8BC}|src\\seed-desafio-cdc\\seed-desafio-cdc.csproj|solutionrelative:src\\seed-desafio-cdc\\context\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{09E37DF8-8F96-4628-B83B-888A4841DF4B}|src\\seed-desafio-cdc-tests\\seed-desafio-cdc-tests.csproj|c:\\git\\seed-desafio-cdc\\src\\seed-desafio-cdc-tests\\authortest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{09E37DF8-8F96-4628-B83B-888A4841DF4B}|src\\seed-desafio-cdc-tests\\seed-desafio-cdc-tests.csproj|solutionrelative:src\\seed-desafio-cdc-tests\\authortest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ED2AC206-5046-4DA4-B735-599BB4F6F8BC}|src\\seed-desafio-cdc\\seed-desafio-cdc.csproj|c:\\git\\seed-desafio-cdc\\src\\seed-desafio-cdc\\migrations\\20240715024210_updatedatacontext_202407142340.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED2AC206-5046-4DA4-B735-599BB4F6F8BC}|src\\seed-desafio-cdc\\seed-desafio-cdc.csproj|solutionrelative:src\\seed-desafio-cdc\\migrations\\20240715024210_updatedatacontext_202407142340.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{ED2AC206-5046-4DA4-B735-599BB4F6F8BC}|src\\seed-desafio-cdc\\seed-desafio-cdc.csproj|c:\\git\\seed-desafio-cdc\\src\\seed-desafio-cdc\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{ED2AC206-5046-4DA4-B735-599BB4F6F8BC}|src\\seed-desafio-cdc\\seed-desafio-cdc.csproj|solutionrelative:src\\seed-desafio-cdc\\categoryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{ED2AC206-5046-4DA4-B735-599BB4F6F8BC}|src\\seed-desafio-cdc\\seed-desafio-cdc.csproj|c:\\git\\seed-desafio-cdc\\src\\seed-desafio-cdc\\migrations\\20240715014110_updatedatacontext_202407142241.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED2AC206-5046-4DA4-B735-599BB4F6F8BC}|src\\seed-desafio-cdc\\seed-desafio-cdc.csproj|solutionrelative:src\\seed-desafio-cdc\\migrations\\20240715014110_updatedatacontext_202407142241.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED2AC206-5046-4DA4-B735-599BB4F6F8BC}|src\\seed-desafio-cdc\\seed-desafio-cdc.csproj|c:\\git\\seed-desafio-cdc\\src\\seed-desafio-cdc\\migrations\\20240715013322_updatedatacontext_202407142217.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED2AC206-5046-4DA4-B735-599BB4F6F8BC}|src\\seed-desafio-cdc\\seed-desafio-cdc.csproj|solutionrelative:src\\seed-desafio-cdc\\migrations\\20240715013322_updatedatacontext_202407142217.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED2AC206-5046-4DA4-B735-599BB4F6F8BC}|src\\seed-desafio-cdc\\seed-desafio-cdc.csproj|c:\\git\\seed-desafio-cdc\\src\\seed-desafio-cdc\\migrations\\20240715000723_updatedatacontext_202407142100.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED2AC206-5046-4DA4-B735-599BB4F6F8BC}|src\\seed-desafio-cdc\\seed-desafio-cdc.csproj|solutionrelative:src\\seed-desafio-cdc\\migrations\\20240715000723_updatedatacontext_202407142100.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rafae\\AppData\\Local\\Temp\\pndas0f0..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\rafae\\AppData\\Local\\Temp\\pndas0f0..sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,8 +39,47 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 9,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "20240715024210_UpdateDataContext_202407142340.cs",
+              "DocumentMoniker": "C:\\Git\\seed-desafio-cdc\\src\\seed-desafio-cdc\\Migrations\\20240715024210_UpdateDataContext_202407142340.cs",
+              "RelativeDocumentMoniker": "src\\seed-desafio-cdc\\Migrations\\20240715024210_UpdateDataContext_202407142340.cs",
+              "ToolTip": "C:\\Git\\seed-desafio-cdc\\src\\seed-desafio-cdc\\Migrations\\20240715024210_UpdateDataContext_202407142340.cs",
+              "RelativeToolTip": "src\\seed-desafio-cdc\\Migrations\\20240715024210_UpdateDataContext_202407142340.cs",
+              "ViewState": "AQIAAAcAAAAAAAAAAAAcwCkAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T02:42:23.191Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "20240715013322_UpdateDataContext_202407142217.cs",
+              "DocumentMoniker": "C:\\Git\\seed-desafio-cdc\\src\\seed-desafio-cdc\\Migrations\\20240715013322_UpdateDataContext_202407142217.cs",
+              "RelativeDocumentMoniker": "src\\seed-desafio-cdc\\Migrations\\20240715013322_UpdateDataContext_202407142217.cs",
+              "ToolTip": "C:\\Git\\seed-desafio-cdc\\src\\seed-desafio-cdc\\Migrations\\20240715013322_UpdateDataContext_202407142217.cs",
+              "RelativeToolTip": "src\\seed-desafio-cdc\\Migrations\\20240715013322_UpdateDataContext_202407142217.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T02:42:18.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "20240715014110_UpdateDataContext_202407142241.cs",
+              "DocumentMoniker": "C:\\Git\\seed-desafio-cdc\\src\\seed-desafio-cdc\\Migrations\\20240715014110_UpdateDataContext_202407142241.cs",
+              "RelativeDocumentMoniker": "src\\seed-desafio-cdc\\Migrations\\20240715014110_UpdateDataContext_202407142241.cs",
+              "ToolTip": "C:\\Git\\seed-desafio-cdc\\src\\seed-desafio-cdc\\Migrations\\20240715014110_UpdateDataContext_202407142241.cs",
+              "RelativeToolTip": "src\\seed-desafio-cdc\\Migrations\\20240715014110_UpdateDataContext_202407142241.cs",
+              "ViewState": "AQIAACsAAAAAAAAAAAAgwAsAAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T01:41:14.187Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{0e6ecdb7-7308-37e5-9768-ada2bc2961ab}"
@@ -45,55 +97,44 @@
               "Name": "ST:0:0:{f6c90d9a-1aa8-32e5-baac-467b7262213c}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{ce0010b1-93a1-33bb-8d9c-bcc1bf6c4873}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AuthorTest.cs",
-              "DocumentMoniker": "C:\\Git\\seed-desafio-cdc\\src\\seed-desafio-cdc-tests\\AuthorTest.cs",
-              "RelativeDocumentMoniker": "src\\seed-desafio-cdc-tests\\AuthorTest.cs",
-              "ToolTip": "C:\\Git\\seed-desafio-cdc\\src\\seed-desafio-cdc-tests\\AuthorTest.cs",
-              "RelativeToolTip": "src\\seed-desafio-cdc-tests\\AuthorTest.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAAQwBQAAABPAAAA",
+              "DocumentIndex": 5,
+              "Title": "20240715000723_UpdateDataContext_202407142100.cs",
+              "DocumentMoniker": "C:\\Git\\seed-desafio-cdc\\src\\seed-desafio-cdc\\Migrations\\20240715000723_UpdateDataContext_202407142100.cs",
+              "RelativeDocumentMoniker": "src\\seed-desafio-cdc\\Migrations\\20240715000723_UpdateDataContext_202407142100.cs",
+              "ToolTip": "C:\\Git\\seed-desafio-cdc\\src\\seed-desafio-cdc\\Migrations\\20240715000723_UpdateDataContext_202407142100.cs",
+              "RelativeToolTip": "src\\seed-desafio-cdc\\Migrations\\20240715000723_UpdateDataContext_202407142100.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-24T02:00:38.685Z",
+              "WhenOpened": "2024-07-15T00:24:18.506Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "BookTest.cs",
-              "DocumentMoniker": "C:\\Git\\seed-desafio-cdc\\src\\seed-desafio-cdc-tests\\BookTest.cs",
-              "RelativeDocumentMoniker": "src\\seed-desafio-cdc-tests\\BookTest.cs",
-              "ToolTip": "C:\\Git\\seed-desafio-cdc\\src\\seed-desafio-cdc-tests\\BookTest.cs",
-              "RelativeToolTip": "src\\seed-desafio-cdc-tests\\BookTest.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAowDsAAAChAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-24T02:00:31.227Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CategoryService.cs",
-              "DocumentMoniker": "C:\\Git\\seed-desafio-cdc\\src\\seed-desafio-cdc\\CategoryService.cs",
-              "RelativeDocumentMoniker": "src\\seed-desafio-cdc\\CategoryService.cs",
-              "ToolTip": "C:\\Git\\seed-desafio-cdc\\src\\seed-desafio-cdc\\CategoryService.cs",
-              "RelativeToolTip": "src\\seed-desafio-cdc\\CategoryService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwA0AAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-24T00:00:11.295Z",
+              "Title": "SQLQuery1.sql ",
+              "DocumentMoniker": "C:\\Users\\rafae\\AppData\\Local\\Temp\\pndas0f0..sql",
+              "RelativeDocumentMoniker": "..\\..\\Users\\rafae\\AppData\\Local\\Temp\\pndas0f0..sql",
+              "ToolTip": "SQLQuery1.sql *",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2024-07-14T19:12:16.403Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Git\\seed-desafio-cdc\\src\\seed-desafio-cdc\\Program.cs",
-              "RelativeDocumentMoniker": "src\\seed-desafio-cdc\\Program.cs",
-              "ToolTip": "C:\\Git\\seed-desafio-cdc\\src\\seed-desafio-cdc\\Program.cs",
-              "RelativeToolTip": "src\\seed-desafio-cdc\\Program.cs",
-              "ViewState": "AQIAAPkAAAAAAAAAAAA2wBEBAABdAAAA",
+              "Title": "DataContext.cs",
+              "DocumentMoniker": "C:\\Git\\seed-desafio-cdc\\src\\seed-desafio-cdc\\Context\\DataContext.cs",
+              "RelativeDocumentMoniker": "src\\seed-desafio-cdc\\Context\\DataContext.cs",
+              "ToolTip": "C:\\Git\\seed-desafio-cdc\\src\\seed-desafio-cdc\\Context\\DataContext.cs",
+              "RelativeToolTip": "src\\seed-desafio-cdc\\Context\\DataContext.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAgwAgAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-24T00:00:24.901Z",
+              "WhenOpened": "2024-07-09T22:32:13.883Z",
               "EditorCaption": ""
             }
           ]

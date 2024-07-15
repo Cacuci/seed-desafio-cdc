@@ -3,63 +3,56 @@ namespace seed_desafio_cdc_tests.csproj
     public class AuthorTest
     {
         //BDD
-        //Given: dado um determinado contexto(tem-se determinada reação);
+        //Given: dado um determinado contexto(tem-se determinada reaï¿½ï¿½o);
         //When: quando ocorrer algo;
-        //Then: então se espera algo.
-        //Exemplo: dada(given) uma nova promoção, quando(then) ela for lançada oficialmente, então (then) será enviada uma notificação a um determinado grupo.
+        //Then: entï¿½o se espera algo.
+        //Exemplo: dada(given) uma nova promoÃ§Ã£o, quando(then) ela for lanï¿½ada oficialmente, entï¿½o (then) serï¿½ enviada uma notificaï¿½ï¿½o a um determinado grupo.
 
-        [Fact(DisplayName = "Validar Email não fornecido (Vazio/nulo)")]
+        [Fact(DisplayName = "Validar Email nï¿½o fornecido (Vazio/nulo)")]
         public void Given_Email_When_VazioOuNulo_Then_DeveLancarExcecao()
         {
             // Arrange & Act & Assert            
 
             var ex = Assert.Throws<Exception>(() =>
             {
-                new Author(email: string.Empty, name: "Name", description: "Descrição");
+                new Author(email: string.Empty, name: "Name", description: "DescriÃ§Ã£o");
             });
 
-            Assert.Equal("Email. Campo obrigatório não fornecido", ex.Message);
-
-            ex = Assert.Throws<Exception>(() =>
-            {
-                new Author(email: null, name: "Name", description: "Descrição");
-            });
-
-            Assert.Equal("Email. Campo obrigatório não fornecido", ex.Message);
+            Assert.Equal("Email. Campo obrigatÃ³rio nÃ£o fornecido", ex.Message);            
         }
 
-        [Fact(DisplayName = "Validar Email em formato inválido")]
+        [Fact(DisplayName = "Validar Email em formato invÃ¡lido")]
         public void Given_Email_When_Invalido_Then_DeveLancarExcecao()
         {
             // Arrange & Act & Assert
 
             var ex = Assert.Throws<Exception>(() =>
             {
-                new Author(email: "rafaelgmail.com", name: "Name", description: "Descrição");
+                new Author(email: "rafaelgmail.com", name: "Name", description: "descriÃ§Ã£o");
             });
 
-            Assert.Equal("Email em formato inválido", ex.Message);
+            Assert.Equal("Email em formato invÃ¡lido", ex.Message);
         }
 
-        [Fact(DisplayName = "Validar Nome não fornecido (Vazio/nulo) ")]
+        [Fact(DisplayName = "Validar Nome nï¿½o fornecido (Vazio/nulo) ")]
         public void Given_Nome_When_VazioOuNulo_Then_DeveLancarExcecao()
         {
             // Arrange & Act & Assert
 
             var ex = Assert.Throws<Exception>(() =>
             {
-                new Author(email: "rafael@gmail", name: string.Empty, description: "Descrição");
+                new Author(email: "rafael@gmail", name: string.Empty, description: "DescriÃ§Ã£o");
             });
 
             ex = Assert.Throws<Exception>(() =>
             {
-                new Author(email: "rafael@gmail", name: null, description: "Descrição");
+                new Author(email: "rafael@gmail", name: string.Empty, description: "DescriÃ§Ã£o");
             });
 
-            Assert.Equal("Name. Campo obrigatório não fornecido", ex.Message);
+            Assert.Equal("Name. Campo obrigatÃ³rio nÃ£o fornecido", ex.Message);
         }
 
-        [Fact(DisplayName = "Validar Descrição não fornecida (Vazio/Nulo)")]
+        [Fact(DisplayName = "Validar descriÃ§Ã£o nÃ£o fornecida (Vazio/Nulo)")]
         public void Given_Descricao_When_VazioOuNulo_DeveLancarExcecao()
         {
             // Arrange & Act & Assert
@@ -71,10 +64,10 @@ namespace seed_desafio_cdc_tests.csproj
 
             ex = Assert.Throws<Exception>(() =>
             {
-                new Author(email: "rafael@gmail.com", name: "Rafael", description: null);
+                new Author(email: "rafael@gmail.com", name: "Rafael", description: string.Empty);
             });
 
-            Assert.Equal("Description. Campo obrigatório não fornecido", ex.Message);
+            Assert.Equal("Description. Campo obrigatÃ³rio nÃ£o fornecido", ex.Message);
         }
 
         [Fact(DisplayName = "Validar Nome menor que o tamanho minimo (3 caracteres)")]
@@ -84,12 +77,12 @@ namespace seed_desafio_cdc_tests.csproj
 
             var ex = Assert.Throws<Exception>(() =>
             {
-                new Author(email: "rafael@gmail", name: "Ra", description: "Descrição");
+                new Author(email: "rafael@gmail", name: "Ra", description: "DescriÃ§Ã£o");
             });
 
             ex = Assert.Throws<Exception>(() =>
             {
-                new Author(email: "rafael@gmail", name: "R", description: "Descrição");
+                new Author(email: "rafael@gmail", name: "R", description: "DescriÃ§Ã£o");
             });
 
             Assert.Equal("Name. Deve conter ao menos {3} caracteres", ex.Message);

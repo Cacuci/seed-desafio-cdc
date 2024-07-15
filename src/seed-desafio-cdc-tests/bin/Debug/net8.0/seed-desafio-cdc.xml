@@ -4,5 +4,166 @@
         <name>seed-desafio-cdc</name>
     </assembly>
     <members>
+        <member name="T:seed_desafio_cdc.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:seed_desafio_cdc.Migrations.UpdateDataContext">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:seed_desafio_cdc.Migrations.UpdateDataContext_202407141642">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407141642.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407141642.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407141642.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:seed_desafio_cdc.Migrations.UpdateDataContext_202407141645">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407141645.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407141645.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407141645.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:seed_desafio_cdc.Migrations.UpdateDataContext_202407141656">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407141656.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407141656.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407141656.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:seed_desafio_cdc.Migrations.UpdateDataContext_202407141742">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407141742.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407141742.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407141742.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:seed_desafio_cdc.Migrations.UpdateDataContext_202407142100">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407142100.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407142100.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407142100.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:seed_desafio_cdc.Migrations.UpdateDataContext_202407142110">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407142110.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407142110.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407142110.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:seed_desafio_cdc.Migrations.UpdateDataContext_202407142217">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407142217.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407142217.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407142217.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:seed_desafio_cdc.Migrations.UpdateDataContext_202407142241">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407142241.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407142241.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407142241.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:seed_desafio_cdc.Migrations.UpdateDataContext_202407142340">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407142340.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407142340.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407142340.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:seed_desafio_cdc.Migrations.UpdateDataContext_202407142346">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407142346.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407142346.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407142346.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:seed_desafio_cdc.Migrations.UpdateDataContext_202407142347">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407142347.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407142347.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:seed_desafio_cdc.Migrations.UpdateDataContext_202407142347.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Book.#ctor(System.String,System.String,System.String,System.Decimal,System.Int32,System.String)">
+            <summary>
+            Utilizado pelo Entity Framework
+            </summary>    
+        </member>
     </members>
 </doc>

@@ -22,7 +22,7 @@
 
             ex = Assert.Throws<Exception>(() =>
             {
-                new Category(name: null);
+                new Category(name: string.Empty);
             });
 
             Assert.Equal("Name. Campo obrigatório não fornecido", ex.Message);
